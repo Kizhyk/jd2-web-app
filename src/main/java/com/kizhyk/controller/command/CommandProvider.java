@@ -18,14 +18,18 @@ public class CommandProvider {
     }
 
     public Command getCommand(String name) {
-        Command command = null;
+        CommandName commandName = null;
 
-        try {
-            command = commands.get(CommandName.valueOf(name.toUpperCase()));
-        } catch (IllegalArgumentException | NullPointerException e) {
-            command = commands.get(CommandName.UNSUPPORTED);
+        if (name == null) {
+            name = CommandName.UNSUPPORTED.name();
         }
 
-        return command;
+        try {
+            commandName = CommandName.valueOf(name.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            commandName = CommandName.UNSUPPORTED;
+        }
+
+        return commands.get(commandName);
     }
 }
