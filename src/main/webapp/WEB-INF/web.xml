@@ -3,5 +3,36 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
+  <display-name>News</display-name>
+
+  <servlet>
+    <servlet-name>SignInPage</servlet-name>
+    <jsp-file>/WEB-INF/jsp/signin.jsp</jsp-file>
+  </servlet>
+
+  <servlet>
+    <servlet-name>SignUpPage</servlet-name>
+    <jsp-file>/WEB-INF/jsp/signup.jsp</jsp-file>
+  </servlet>
+
+  <servlet>
+    <servlet-name>Controller</servlet-name>
+    <servlet-class>com.kizhyk.controller.Controller</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Controller</servlet-name>
+    <url-pattern></url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>SignInPage</servlet-name>
+    <url-pattern>/signin</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>SignUpPage</servlet-name>
+    <url-pattern>/signup</url-pattern>
+  </servlet-mapping>
+
 </web-app>
