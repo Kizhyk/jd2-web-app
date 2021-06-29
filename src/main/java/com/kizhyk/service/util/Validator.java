@@ -10,6 +10,7 @@ public class Validator {
     private static final Validator instance = new Validator();
     private static final String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
     private final Pattern pattern = Pattern.compile(EMAIL_REGEX);
+    private static final String PASSWORD_ALLOWED_CHARACTER = "a-zA-Z0-9~`!@#$%^&*()_-+={[}]|\\:;\"'<,>.?/";
 
     private Validator() {
     }
@@ -38,8 +39,9 @@ public class Validator {
             throw new ServiceIllegalArgumentException();
         }
 
-
-
+        if (!password.matches(String.format("[%s]+", PASSWORD_ALLOWED_CHARACTER))) {
+            throw new ServiceIllegalArgumentException();
+        }
     }
 
     public void validateUser(UserEntity user) throws ServiceIllegalArgumentException {
