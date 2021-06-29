@@ -61,6 +61,11 @@
         <plugin>
           <artifactId>maven-war-plugin</artifactId>
           <version>3.2.2</version>
+          <!--
+            Executions тут нужны для быстрого деплоя.
+            У меня локалько тут стоит второй execution,
+            который собирает war-архив мне в папку с Tomcat-ом (не под IDE).
+          -->
           <executions>
             <execution>
               <id>default-war</id>
