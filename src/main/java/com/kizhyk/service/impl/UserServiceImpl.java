@@ -15,7 +15,8 @@ public class UserServiceImpl implements UserService {
     public void signUp(String login, String email, String password) throws ServiceIllegalArgumentException {
         try {
             UserEntity user = new UserEntity(login, email, password);
-            Validator.validateUser(user);
+            Validator validator = Validator.getInstance();
+            validator.validateUser(user);
             System.out.println(user);
         } catch (IllegalArgumentException e) {
             throw new ServiceIllegalArgumentException("Incorrect user's data", e);
